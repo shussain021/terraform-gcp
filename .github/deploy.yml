@@ -32,9 +32,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
       - name: Terraform Plan (Dev)
-        run: terraform plan -var-file=tfvars/dev.tfvars
+        run: terraform plan -var-file=./envs/dev.tfvars
       - name: Terraform Apply (Dev)
-        run: terraform apply -var-file=envs/dev.tfvars -auto-approve
+        run: terraform apply -var-file=./envs/dev.tfvars -auto-approve
   deploy-qa:
     runs-on: ubuntu-latest
     steps:
@@ -48,9 +48,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
       - name: Terraform Plan (QA)
-        run: terraform plan -var-file=tfvars/dev.tfvars
+        run: terraform plan -var-file=./envs/qa.tfvars
       - name: Terraform Apply (QA)
-        run: terraform apply -var-file=envs/qa.tfvars -auto-approve
+        run: terraform apply -var-file=./envs/qa.tfvars -auto-approve
   deploy-stage:
     runs-on: ubuntu-latest
     steps:
@@ -64,9 +64,9 @@ jobs:
       - name: Terraform Init
         run: terraform init
       - name: Terraform Plan (STAGE)
-        run: terraform plan -var-file=tfvars/dev.tfvars
+        run: terraform plan -var-file=./envs/stage.tfvars
       - name: Terraform Apply (STAGE)
-        run: terraform apply -var-file=envs/stage.tfvars
+        run: terraform apply -var-file=./envs/stage.tfvars
   deploy-prod:
     runs-on: ubuntu-latest
     steps:
@@ -80,6 +80,6 @@ jobs:
       - name: Terraform Init
         run: terraform init
       - name: Terraform Plan (PROD)
-        run: terraform plan -var-file=tfvars/dev.tfvars
+        run: terraform plan -var-file=./envs/prod.tfvars
       - name: Terraform Apply (PROD)
-        run: terraform apply -var-file=envs/prod.tfvars
+        run: terraform apply -var-file=./envs/prod.tfvars
